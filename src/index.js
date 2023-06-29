@@ -11,13 +11,14 @@ import ReactDOM from 'react-dom/client';
 //import { Layout } from './components/05-useLayoutEffect/Layout';
 //import { Memorize } from './components/05-useMemo/Memorize';
 //import { MemoHook } from './components/06-useMemo/MemoHook';
-import { CallbackHook } from './components/07-useCallBack/CallbackHook';
+//import { CallbackHook } from './components/07-useCallBack/CallbackHook';
+import { Padre } from './components/08-tarea-memo/Padre';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <CallbackHook />
+    <Padre />
   </React.StrictMode>
 );
 
