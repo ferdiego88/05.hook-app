@@ -1,17 +1,54 @@
-import React, { useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { todoReducer } from './todoReducer';
 import '../styles.scss';
+import { useForm } from '../../hooks/useForm';
 
-const initialState = [{
-    id: new Date().getTime(),
-    desc: 'Aprender React',
-    done: false
-}]
+const init = () => {
+
+    return JSON.parse(localStorage.getItem('todos')) || [];
+
+    // return [{
+    //     id: new Date().getTime(),
+    //     desc: 'Aprender React',
+    //     done: false
+    // }]
+}
 
 export const TodoApp = () => {
 
-    const [todos, dispatch] = useReducer(todoReducer, initialState);
-    console.log(todos);
+    const [todos, dispatch] = useReducer(todoReducer, [], init);
+    
+    const [{description}, handleInputChange, reset ]=useForm({
+        description: ''
+    })
+    console.log(description);
+
+
+    useEffect(() => {
+       localStorage.setItem('todos',JSON.stringify(todos));
+    }, [todos])
+    
+
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        
+        if(description.trim().length <=1) return;
+
+        const newTodo = {
+            id: new Date().getTime(),
+            desc: description,
+            done: false
+        }
+
+        const action = {
+            type: 'add',
+            payload: newTodo
+        }
+
+        dispatch(action);
+        reset();
+    }
 
   return (
     <div>
@@ -46,19 +83,20 @@ export const TodoApp = () => {
             <div className="col-5">
                 <h4>Agregar TODO</h4>
                 <hr />
-                <form action="">
-
+                <form onSubmit={handleSubmit}>
                     <input
                     type="text"
-                    name='description'
                     placeholder='Aprender...'
                     autoComplete='off'
                     className='form-control'
+                    name='description'
+                    onChange={handleInputChange}
+                    value={description}
                     />
-
-                    <div class="d-grid gap-2 mt-2">
-                    <button 
-                    class="btn btn-outline-primary"
+                    <div className="d-grid gap-2 mt-2">
+                    <button
+                    type='submit'
+                    className="btn btn-outline-primary"
                     >Agregar
                     </button>
                     </div>
