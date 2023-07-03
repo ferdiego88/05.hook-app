@@ -12,13 +12,13 @@ export const NavBar = () => {
       <div className="collapse navbar-collapse" id="navbarSupportedContent">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0">
           <li className="nav-item">
-            <NavLink activeClassName="active" className='nav-link' to='/'>Home</NavLink>
+            <NavLink activeclassname="active" className='nav-link' to='/'>Home</NavLink>
           </li>
           <li>
-          <NavLink activeClassName="active" className='nav-link' to='/about'>About</NavLink>
+          <NavLink activeclassname="active" className='nav-link' to='/about'>About</NavLink>
           </li>
           <li>
-          <NavLink activeClassName="active" className='nav-link' to='/login'>Login</NavLink>
+          <NavLink activeclassname="active" className='nav-link' to='/login'>Login</NavLink>
           </li>
         </ul>
 
