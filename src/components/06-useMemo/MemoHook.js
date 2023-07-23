@@ -5,7 +5,7 @@ import { procesoPesado } from '../../helpers/procesoPesado';
 
 export const MemoHook = () => {
 
-    const {state: counter, increment} = useCounter(2000);
+    const {counter, increment} = useCounter(2000);
     const [show, setShow] = useState(true);
 
 

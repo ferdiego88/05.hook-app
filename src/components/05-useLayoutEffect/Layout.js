@@ -9,7 +9,7 @@ export const Layout = () => {
 
 
 
-  const { state:counter, increment} = useCounter(1);
+  const { counter, increment} = useCounter(1);
   const { data } = useFetch(`https://api.breakingbadquotes.xyz/v1/quotes/${counter}`);
   const { quote } = !!data && data[0];
 
